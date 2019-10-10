@@ -1,7 +1,7 @@
 
 /* IMPORT */
 
-import * as fs from 'fs-extra'
+import * as fs from 'fs-extra';
 import getUnusedPath from 'get-unused-path';
 import {Options, Result} from 'get-unused-path/dist/types';
 import tryloop from 'tryloop';
