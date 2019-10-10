@@ -1,6 +1,7 @@
 
 /* IMPORT */
 
+import * as fs from 'fs-extra'
 import getUnusedPath from 'get-unused-path';
 import {Options, Result} from 'get-unused-path/dist/types';
 import tryloop from 'tryloop';
@@ -16,10 +17,12 @@ function writeUnusedPath ( content: string | Buffer, options: Options ): Promise
 
       function write () {
         return new Promise ( resolve => {
-          writeFileAtomic ( result.filePath, content, err => {
-            if ( err ) return resolve ();
-            resolve ( true );
-          });
+          fs.ensureDir ( result.folderPath ).then ( () => {
+            writeFileAtomic ( result.filePath, content, err => {
+              if ( err ) return resolve ();
+              resolve ( true );
+            });
+          }).catch ( () => resolve () );
         });
       }
 
