@@ -49,6 +49,8 @@ example ();
 ## Related
 
 - [get-unused-path](https://github.com/fabiospampinato/get-unused-path): Reliably get an unused path you can write to.
+- [copy-unused-path](https://github.com/fabiospampinato/copy-unused-path): Reliably copy to an unused path.
+- [move-unused-path](https://github.com/fabiospampinato/move-unused-path): Reliably move to an unused path.
 
 ## License
 
