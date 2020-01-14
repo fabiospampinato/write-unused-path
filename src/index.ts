@@ -5,11 +5,12 @@ import * as fs from 'fs-extra';
 import getUnusedPath from 'get-unused-path';
 import {Options, Result} from 'get-unused-path/dist/types';
 import tryloop from 'tryloop';
+import {ExponentialOptions} from 'tryloop/dist/types';
 import * as writeFileAtomic from 'write-file-atomic';
 
 /* WRITE UNUSED PATH */
 
-function writeUnusedPath ( content: string | Buffer, options: Options ): Promise<Result> {
+function writeUnusedPath ( content: string | Buffer, options: Options, tryloopOptions?: Partial<Omit<ExponentialOptions, 'fn'>> ): Promise<Result> {
 
   return new Promise ( ( resolve, reject ) => {
 
@@ -32,14 +33,16 @@ function writeUnusedPath ( content: string | Buffer, options: Options ): Promise
         reject ( new Error ( 'Couldn\'t write atomically to unused path' ) );
       }
 
-      const loop = tryloop.exponential ({
+      const exponentialOptions = Object.assign ({
         timeout: 3000,
         tries: 20,
         factor: 2,
         minInterval: 1,
         maxInterval: 1000,
         fn: write
-      });
+      }, tryloopOptions );
+
+      const loop = tryloop.exponential ( exponentialOptions );
 
       loop.start ().then ( end ).catch ( end );
 
