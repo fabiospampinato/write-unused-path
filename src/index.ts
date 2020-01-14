@@ -33,7 +33,7 @@ function writeUnusedPath ( content: string | Buffer, options: Options ): Promise
       }
 
       const loop = tryloop.exponential ({
-        timeout: 1500,
+        timeout: 3000,
         tries: 20,
         factor: 2,
         minInterval: 1,
