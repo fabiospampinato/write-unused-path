@@ -3,10 +3,11 @@
 
 import * as fs from 'fs-extra';
 import getUnusedPath from 'get-unused-path';
-import {Options, Result} from 'get-unused-path/dist/types';
+import {Result} from 'get-unused-path/dist/types';
 import tryloop from 'tryloop';
 import {ExponentialOptions} from 'tryloop/dist/types';
 import * as writeFileAtomic from 'write-file-atomic';
+import {Options} from './types';
 
 /* WRITE UNUSED PATH */
 
@@ -28,7 +29,7 @@ function writeUnusedPath ( content: string | Buffer, options: Options, tryloopOp
       }
 
       function end ( success?: boolean ) {
-        result.dispose ();
+        if ( options.autoDispose !== false ) result.dispose ();
         if ( success === true ) return resolve ( result );
         reject ( new Error ( 'Couldn\'t write atomically to unused path' ) );
       }
