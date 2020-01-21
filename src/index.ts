@@ -52,6 +52,8 @@ function writeUnusedPath ( content: string | Buffer, options: Options, tryloopOp
 
 }
 
+writeUnusedPath.blacklist = getUnusedPath.blacklist;
+
 /* EXPORT */
 
 export default writeUnusedPath;
