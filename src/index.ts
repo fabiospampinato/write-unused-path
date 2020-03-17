@@ -1,12 +1,11 @@
 
 /* IMPORT */
 
-import * as fs from 'fs-extra';
 import getUnusedPath from 'get-unused-path';
 import {Result} from 'get-unused-path/dist/types';
 import tryloop from 'tryloop';
 import {ExponentialOptions} from 'tryloop/dist/types';
-import * as writeFileAtomic from 'write-file-atomic';
+import {fromCallback as universalify} from 'universalify';
 import {Options} from './types';
 
 /* WRITE UNUSED PATH */
@@ -19,7 +18,9 @@ function writeUnusedPath ( content: string | Buffer, options: Options, tryloopOp
 
       function write () {
         return new Promise ( resolve => {
-          fs.ensureDir ( result.folderPath ).then ( () => {
+          const ensureDir = universalify ( require ( 'fs-extra/lib/mkdirs/mkdirs' ) );
+          ensureDir ( result.folderPath ).then ( () => {
+            const writeFileAtomic = require ( 'write-file-atomic' );
             writeFileAtomic ( result.filePath, content, err => {
               if ( err ) return resolve ();
               resolve ( true );

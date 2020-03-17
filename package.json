@@ -45,6 +45,7 @@
     "fs-extra": "^8.1.0",
     "get-unused-path": "^1.4.0",
     "tryloop": "^1.1.0",
+    "universalify": "^1.0.0",
     "write-file-atomic": "^3.0.1"
   },
   "devDependencies": {
