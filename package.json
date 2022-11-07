@@ -2,7 +2,7 @@
   "name": "write-unused-path",
   "repository": "github:fabiospampinato/write-unused-path",
   "description": "Reliably write to an unused path.",
-  "version": "1.3.1",
+  "version": "2.0.0",
   "type": "module",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
