@@ -1,14 +1,16 @@
 
 /* IMPORT */
 
-import {Options as BaseOptions} from 'get-unused-path/dist/types';
+import type {WriteOptions} from 'atomically/dist/types';
+import type {Options as BaseOptions, Result} from 'get-unused-path/dist/types';
 
-/* TYPES */
+/* MAIN */
 
 type Options = BaseOptions & {
-  autoDispose?: boolean // Automatically dispose once the operation is completed, enabled by default
+  autoDispose?: boolean, // Automatically dispose once the operation is completed, enabled by default
+  writeOptions?: WriteOptions // Options to be passed to "atomically"
 };
 
 /* EXPORT */
 
-export {Options};
+export type {Options, Result};

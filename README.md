@@ -29,7 +29,7 @@ It accepts the same options object as [get-unused-path](https://github.com/fabio
 It also returns the same return value as [get-unused-path](https://github.com/fabiospampinato/get-unused-path).
 
 ```ts
-import * as fs from 'fs';
+import fs from 'fs';
 import writeUnusedPath from 'write-unused-path';
 
 async function example () {

@@ -1,19 +1,19 @@
 
 /* IMPORT */
 
-import {describe} from 'ava-spec';
-import * as fs from 'fs';
-import * as path from 'path';
-import {default as writeUnusedPath} from '../dist';
+import {describe} from 'fava';
+import fs from 'node:fs';
+import path from 'node:path';
+import writeUnusedPath from '../dist/index.js';
 
-/* WRITE UNUSED PATH */
+/* MAIN */
 
 describe ( 'writeUnusedPath', it => {
 
   it ( 'works', async t => {
 
-    const filePath = path.join ( process.cwd (), 'foo.txt' ),
-          content = 'test';
+    const filePath = path.join ( process.cwd (), 'foo.txt' );
+    const content = 'test';
 
     for ( let i = 0; i < 3; i++ ) { // Ensuring unused path get disposed after use
 
