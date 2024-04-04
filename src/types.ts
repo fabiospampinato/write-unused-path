@@ -1,8 +1,8 @@
 
 /* IMPORT */
 
-import type {WriteOptions} from 'atomically/dist/types';
-import type {Options as BaseOptions, Result} from 'get-unused-path/dist/types';
+import type {WriteOptions} from 'atomically';
+import type {Options as BaseOptions, Result} from 'get-unused-path';
 
 /* MAIN */
 

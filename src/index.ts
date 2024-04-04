@@ -32,3 +32,4 @@ const writeUnusedPath = async ( content: Uint8Array | string, options: Options )
 /* EXPORT */
 
 export default writeUnusedPath;
+export type {Options, Result};

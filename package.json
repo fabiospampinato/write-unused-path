@@ -21,8 +21,8 @@
     "path"
   ],
   "dependencies": {
-    "atomically": "^2.0.1",
-    "get-unused-path": "^2.0.0"
+    "atomically": "^2.0.3",
+    "get-unused-path": "^2.0.1"
   },
   "devDependencies": {
     "fava": "^0.2.1",
