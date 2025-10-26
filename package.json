@@ -22,12 +22,12 @@
     "path"
   ],
   "dependencies": {
-    "atomically": "^2.0.3",
-    "get-unused-path": "^2.0.1"
+    "atomically": "^2.1.0",
+    "get-unused-path": "^2.0.3"
   },
   "devDependencies": {
-    "fava": "^0.2.1",
-    "tsex": "^3.0.1",
-    "typescript": "^5.1.6"
+    "fava": "^0.3.5",
+    "tsex": "^4.0.2",
+    "typescript": "^5.9.3"
   }
 }
