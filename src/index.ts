@@ -19,11 +19,7 @@ const writeUnusedPath = async ( content: Uint8Array | string, options: Options )
 
   } finally {
 
-    if ( options.autoDispose !== false ) {
-
-      result.dispose ();
-
-    }
+    result.dispose ();
 
   }
 
