@@ -13,51 +13,41 @@ It is basically a wrapper around [get-unused-path](https://github.com/fabiospamp
 ## Install
 
 ```sh
-npm install --save write-unused-path
+npm install write-unused-path
 ```
 
 ## Usage
-
-It accepts the same options object as [get-unused-path](https://github.com/fabiospampinato/get-unused-path), plus the following options:
-
-```ts
-{
-  autoDispose?: boolean // Automatically dispose once the operation is completed, enabled by default
-}
-```
-
-It also returns the same return value as [get-unused-path](https://github.com/fabiospampinato/get-unused-path).
 
 ```ts
 import fs from 'fs';
 import writeUnusedPath from 'write-unused-path';
 
-async function example () {
+// Let's write a file to an unused path
 
-  const content = 'some content';
+const content = 'some content';
 
-  const {folderPath, filePath, fileName} = await writeUnusedPath ( content, {
-    folderPath: '/x/y/z',
-    fileName: 'foo.txt',
-    // maxTries: 1000,
-    // incrementer: ( name, ext, attempt ) => attempt > 1 ? `${name}-${attempt}${ext}` : `${name}${ext}`
-  });
+const result = await writeUnusedPath ( content, {
+  fileName: 'foo.txt',
+  folderPath: '/x/y/z',
+  // incrementer: ( name, ext, attempt ) => attempt > 1 ? `${name}-${attempt}${ext}` : `${name}${ext}`,
+  // maxTries: 1000,
+  // writeOptions: {} // Write options from the "atomically" package
+});
 
-  console.log ( folderPath ); // => '/x/y/z'
-  console.log ( filePath ); // => '/x/y/z/foo (3).txt'
-  console.log ( fileName ); // => 'foo (3).txt'
+result.folderPath; // => '/x/y/z'
+result.filePath; // => '/x/y/z/foo (3).txt'
+result.fileName; // => 'foo (3).txt'
 
-  console.log ( fs.readFileSync ( filePath, { encoding: 'utf8' } ) ); // => 'some content'
+// Let's check that the file got actually written
 
-}
-
-example ();
+console.log ( fs.readFileSync ( filePath, { encoding: 'utf8' } ) ); // => 'some content'
 ```
 
 ## Related
 
-- [get-unused-path](https://github.com/fabiospampinato/get-unused-path): Reliably get an unused path you can write to.
+- [unused-path](https://github.com/fabiospampinato/unused-path): Reliably get an unused path and copy/move/write to it.
 - [copy-unused-path](https://github.com/fabiospampinato/copy-unused-path): Reliably copy to an unused path.
+- [get-unused-path](https://github.com/fabiospampinato/get-unused-path): Reliably get an unused path you can write to.
 - [move-unused-path](https://github.com/fabiospampinato/move-unused-path): Reliably move to an unused path.
 
 ## License
